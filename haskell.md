@@ -344,8 +344,13 @@ data Person = Person
   } deriving (Eq, Show)
 ```
 
-You *must* not declare records with multiple constructors because their getters
-are partial functions.
+You *can* declare records with multiple constructors but only if
+[`-Wincomplete-record-updates`](http://downloads.haskell.org/ghc/7.0.4/docs/html/users_guide/options-sanity.html)
+GHC flag (also implied by `-Weverything`) is enabled globally for the project.
+In such case you won't be able to access or modify objects via partial records,
+but features provided by [`-NamedFieldPuns`](http://downloads.haskell.org/~ghc/8.6.2/docs/html/users_guide/glasgow_exts.html#extension-NamedFieldPuns)
+and [`-XRecordWildCards`](http://downloads.haskell.org/~ghc/8.6.2/docs/html/users_guide/glasgow_exts.html#extension-RecordWildCards)
+extensions remain allowed.
 
 As usual, separate type classes with `, ` (comma and a space).
 
