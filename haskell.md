@@ -27,7 +27,8 @@ Note for Serokell people:
 ### Line Length
 
 You *should* keep maximum line length below *80 characters*. If necessary, you
-*may* use up to *100 characters*, although this is discouraged.
+*may* use up to *100 characters*, although this is discouraged. You *should*
+wrap imports at *100 characters*.
 
 ### Indentation
 
