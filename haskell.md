@@ -84,8 +84,8 @@ filter p (x:xs)
       } deriving Generic
     ```
   - You *should* surround binary operators with a single space on either side:
-    `3 + 5`. You *may* choose not to do that to emphasize grouping of terms: `2
-    + 2*2`.
+    `3 + 5`. You *may* choose not to do that to emphasize grouping of terms:
+    `2 + 2*2`.
   - When using currying with binary operators, you *must* add one space between
     the argument and the operation: `(42 +)`.
   - You *must* remove all trailing whitespace.
