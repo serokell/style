@@ -575,6 +575,12 @@ group independently.
 You *may* use [`weeder`][weeder] to detect
 unused dependencies and exported modules.
 
+## Best practices
+
+Some of the things that were previously located in this guide were deemed to be
+best practices rather than style guidelines and moved
+[elsewhere](best-practices.md).
+
 [stylish-haskell]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.stylish-haskell.yaml
 [hlint]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.hlint.yaml
 [editorconfig]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.editorconfig
