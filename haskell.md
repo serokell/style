@@ -540,9 +540,7 @@ foobar =
 
 You *should* align the `->` arrows whenever it helps readability.
 
-It is suggested to use `-XLambdaCase`. See [this
-discussion](https://github.com/jaspervdj/stylish-haskell/issues/186) for some
-usage examples.
+It is suggested to use `-XLambdaCase`.
 
 ## Misc
 
