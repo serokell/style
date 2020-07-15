@@ -88,8 +88,8 @@ filter p (x:xs)
     `2 + 2*2`.
   - When using currying with binary operators, you *must* add one space between
     the argument and the operation: `(42 +)`.
-  - You *must* remove all trailing whitespace.
-  - You *must* append a trailing newline to all source files.
+  - You *must* remove all trailing whitespace characters.
+  - You *must* append a trailing newline character to all source files.
 
 The last two points can be handled by [EditorConfig](https://editorconfig.org/).
 You are encouraged to install an EditorConfig plugin for your editor and use
