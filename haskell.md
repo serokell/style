@@ -286,8 +286,6 @@ Some clarifications:
 4.  If your export list is empty, you *may* write in on the same line as the
     `module` declaration.
 
-You *may* use [`weeder`][weeder] to detect unused exports.
-
 ### Imports
 
 Imports *should* be grouped in the following order:
@@ -559,10 +557,6 @@ Modules and libraries should go in alphabetical order inside corresponding
 sections. You *may* put blank lines between groups in each section and sort each
 group independently.
 
-You *may* use [`weeder`][weeder] to detect
-unused dependencies and exported modules.
-
 [stylish-haskell]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.stylish-haskell.yaml
 [hlint]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.hlint.yaml
 [editorconfig]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.editorconfig
-[weeder]: https://hackage.haskell.org/package/weeder
