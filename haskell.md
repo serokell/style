@@ -11,6 +11,39 @@ guide](https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md
 It aims to make code easy to understand and uniform, while keeping diffs as
 small as possible.
 
+Note for Serokell people:
+
+  - All existing projects *should* continue using their current style guides,
+    but *may* choose to switch to this one.
+  - All new projects *must* adhere to the guidelines below.
+
+Table of contents:
+- [Configuration files](#configuration-files)
+- [General Guidelines](#general-guidelines)
+  + [Line Length](#line-length)
+  + [Indentation](#indentation)
+  + [Blank Lines](#blank-lines)
+  + [Whitespace](#whitespace)
+  + [Naming conventions](#naming-conventions)
+  + [Comments](#comments)
+- [Top-down guideline](#top-down-guideline)
+  + [LANGUAGE extensions section](#language-extensions-section)
+  + [Module name](#module-name)
+  + [Export lists](#export-lists)
+  + [Imports](#imports)
+  + [Data declarations](#data-declarations)
+  + [Function declaration](#function-declaration)
+  + [Pragmas](#pragmas)
+  + [List declarations](#list-declarations)
+  + [Hanging lambdas](#hanging-lambdas)
+  + [If-then-else clauses](#if-then-else-clauses)
+  + [Case expressions](#case-expressions)
+- [Misc](#misc)
+  + [Point-free style](#point-free-style)
+- [Cabal file formatting](#cabal-file-formatting)
+
+## Configuration files
+
 We provide some configuration files for popular tools that help maintain code
 style:
 
@@ -22,13 +55,7 @@ style:
     Prelude
   - [EditorConfig config][editorconfig]
 
-Note for Serokell people:
-
-  - All existing projects *should* continue using their current style guides,
-    but *may* choose to switch to this one.
-  - All new projects *must* adhere to the guidelines below.
-
-## General guidelines
+## General Guidelines
 
 ### Line Length
 
