@@ -293,8 +293,11 @@ Imports *should* be grouped in the following order:
 0.  Implicit import of custom prelude (for example
     [`universum`](https://github.com/serokell/universum)) if you are using one.
     You *may* also use
-    [`base-noprelude`](https://hackage.haskell.org/package/base-noprelude) in
-    order to avoid importing your custom prelude at all.
+    [`base-noprelude`](https://hackage.haskell.org/package/base-noprelude) or
+    the `mixins` feature of `cabal` in order to avoid explicitly importing your
+    custom prelude at all.
+    Note that the latter currently
+    [breaks](https://github.com/commercialhaskell/stack/issues/5077) `stack repl`.
 1.  Everything from hackage packages or from your packages outside current
     project. "Project" is loosely defined as everything that is in your current
     repository.
