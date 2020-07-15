@@ -81,7 +81,7 @@ filter p (x:xs)
       , _addresses :: route :- WAddressesApi        -- /addresses
       , _profile   :: route :- WProfileApi          -- /profile
       -- ...
-      } deriving Generic
+      } deriving stock Generic
     ```
   - You *should* surround binary operators with a single space on either side:
     `3 + 5`. You *may* choose not to do that to emphasize grouping of terms:
@@ -348,7 +348,7 @@ data Person = Person
   { firstName :: String  -- ^ First name
   , lastName  :: String  -- ^ Last name
   , age       :: Int     -- ^ Age
-  } deriving (Eq, Show)
+  } deriving stock (Eq, Show)
 ```
 
 You *must* not declare records with multiple constructors because their getters
@@ -356,19 +356,8 @@ are partial functions.
 
 As usual, separate type classes with `, ` (comma and a space).
 
-If you are using GHC-8.2.2 or higher you *should* use
-[`-XDerivingStrategies`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies)
-and specify the way you derive explicitly. Example:
-
-``` haskell
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE DerivingStrategies         #-}
-
-newtype SpecialId = SpecialId Int
-  deriving stock    (Eq, Ord, Show, Generic)
-  deriving newtype  Read
-  deriving anyclass (FromJSON, ToJSON)
-```
+You *should* specify explicit [deriving strategies](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies) in all `deriving` clauses.
+The `-Wmissing-deriving-strategies ` warning (available since GHC-8.8.1) can help you enforce this rule on CI.
 
 ### Function declaration
 
