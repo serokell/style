@@ -11,6 +11,39 @@ guide](https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md
 It aims to make code easy to understand and uniform, while keeping diffs as
 small as possible.
 
+Note for Serokell people:
+
+  - All existing projects *should* continue using their current style guides,
+    but *may* choose to switch to this one.
+  - All new projects *must* adhere to the guidelines below.
+
+Table of contents:
+- [Configuration files](#configuration-files)
+- [General Guidelines](#general-guidelines)
+  + [Line Length](#line-length)
+  + [Indentation](#indentation)
+  + [Blank Lines](#blank-lines)
+  + [Whitespace](#whitespace)
+  + [Naming conventions](#naming-conventions)
+  + [Comments](#comments)
+- [Top-down guideline](#top-down-guideline)
+  + [LANGUAGE extensions section](#language-extensions-section)
+  + [Module name](#module-name)
+  + [Export lists](#export-lists)
+  + [Imports](#imports)
+  + [Data declarations](#data-declarations)
+  + [Function declaration](#function-declaration)
+  + [Pragmas](#pragmas)
+  + [List declarations](#list-declarations)
+  + [Hanging lambdas](#hanging-lambdas)
+  + [If-then-else clauses](#if-then-else-clauses)
+  + [Case expressions](#case-expressions)
+- [Misc](#misc)
+  + [Point-free style](#point-free-style)
+- [Cabal file formatting](#cabal-file-formatting)
+
+## Configuration files
+
 We provide some configuration files for popular tools that help maintain code
 style:
 
@@ -22,13 +55,7 @@ style:
     Prelude
   - [EditorConfig config][editorconfig]
 
-Note for Serokell people:
-
-  - All existing projects *should* continue using their current style guides,
-    but *may* choose to switch to this one.
-  - All new projects *must* adhere to the guidelines below.
-
-## General guidelines
+## General Guidelines
 
 ### Line Length
 
@@ -81,15 +108,15 @@ filter p (x:xs)
       , _addresses :: route :- WAddressesApi        -- /addresses
       , _profile   :: route :- WProfileApi          -- /profile
       -- ...
-      } deriving Generic
+      } deriving stock Generic
     ```
   - You *should* surround binary operators with a single space on either side:
     `3 + 5`. You *may* choose not to do that to emphasize grouping of terms:
     `2 + 2*2`.
   - When using currying with binary operators, you *must* add one space between
     the argument and the operation: `(42 +)`.
-  - You *must* remove all trailing whitespace.
-  - You *must* append a trailing newline to all source files.
+  - You *must* remove all trailing whitespace characters.
+  - You *must* append a trailing newline character to all source files.
 
 The last two points can be handled by [EditorConfig](https://editorconfig.org/).
 You are encouraged to install an EditorConfig plugin for your editor and use
@@ -286,8 +313,6 @@ Some clarifications:
 4.  If your export list is empty, you *may* write in on the same line as the
     `module` declaration.
 
-You *may* use [`weeder`][weeder] to detect unused exports.
-
 ### Imports
 
 Imports *should* be grouped in the following order:
@@ -295,8 +320,11 @@ Imports *should* be grouped in the following order:
 0.  Implicit import of custom prelude (for example
     [`universum`](https://github.com/serokell/universum)) if you are using one.
     You *may* also use
-    [`base-noprelude`](https://hackage.haskell.org/package/base-noprelude) in
-    order to avoid importing your custom prelude at all.
+    [`base-noprelude`](https://hackage.haskell.org/package/base-noprelude) or
+    the `mixins` feature of `cabal` in order to avoid explicitly importing your
+    custom prelude at all.
+    Note that the latter currently
+    [breaks](https://github.com/commercialhaskell/stack/issues/5077) `stack repl`.
 1.  Everything from hackage packages or from your packages outside current
     project. "Project" is loosely defined as everything that is in your current
     repository.
@@ -348,7 +376,7 @@ data Person = Person
   { firstName :: String  -- ^ First name
   , lastName  :: String  -- ^ Last name
   , age       :: Int     -- ^ Age
-  } deriving (Eq, Show)
+  } deriving stock (Eq, Show)
 ```
 
 You *must* not declare records with multiple constructors because their getters
@@ -356,19 +384,8 @@ are partial functions.
 
 As usual, separate type classes with `, ` (comma and a space).
 
-If you are using GHC-8.2.2 or higher you *should* use
-[`-XDerivingStrategies`](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies)
-and specify the way you derive explicitly. Example:
-
-``` haskell
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE DerivingStrategies         #-}
-
-newtype SpecialId = SpecialId Int
-  deriving stock    (Eq, Ord, Show, Generic)
-  deriving newtype  Read
-  deriving anyclass (FromJSON, ToJSON)
-```
+You *should* specify explicit [deriving strategies](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies) in all `deriving` clauses.
+The `-Wmissing-deriving-strategies ` warning (available since GHC-8.8.1) can help you enforce this rule on CI.
 
 ### Function declaration
 
@@ -551,9 +568,7 @@ foobar =
 
 You *should* align the `->` arrows whenever it helps readability.
 
-It is suggested to use `-XLambdaCase`. See [this
-discussion](https://github.com/jaspervdj/stylish-haskell/issues/186) for some
-usage examples.
+It is suggested to use `-XLambdaCase`.
 
 ## Misc
 
@@ -572,10 +587,6 @@ Modules and libraries should go in alphabetical order inside corresponding
 sections. You *may* put blank lines between groups in each section and sort each
 group independently.
 
-You *may* use [`weeder`][weeder] to detect
-unused dependencies and exported modules.
-
 [stylish-haskell]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.stylish-haskell.yaml
 [hlint]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.hlint.yaml
 [editorconfig]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.editorconfig
-[weeder]: https://hackage.haskell.org/package/weeder
