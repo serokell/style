@@ -27,7 +27,6 @@ Table of contents:
   + [Naming conventions](#naming-conventions)
   + [Comments](#comments)
 - [Top-down guideline](#top-down-guideline)
-  + [LANGUAGE extensions section](#language-extensions-section)
   + [Module name](#module-name)
   + [Export lists](#export-lists)
   + [Imports](#imports)
@@ -265,18 +264,6 @@ sparingly. We recommend adding a link to an API name if:
     repeating a link)
 
 ## Top-down guideline
-
-### LANGUAGE extensions section
-
-Write each `LANGUAGE` pragma on its own line, sort them alphabetically and align
-by max width among them. `stylish-haskell` with [our config][stylish-haskell]
-can do this for you.
-
-``` haskell
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE Rank2Types       #-}
-{-# LANGUAGE TemplateHaskell  #-}
-```
 
 ### Module name
 
