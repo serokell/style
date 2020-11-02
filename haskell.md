@@ -196,7 +196,7 @@ below for end-of-line comments.
   - You *should* comment every top-level function.
 
 You *must* use [Haddock
-syntax](https://www.haskell.org/haddock/doc/html/ch03s08.html) in the comments.
+syntax](https://haskell-haddock.readthedocs.io/en/latest/markup.html#markup) in the comments.
 
 Example:
 
