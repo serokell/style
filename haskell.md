@@ -46,13 +46,13 @@ Table of contents:
 We provide some configuration files for popular tools that help maintain code
 style:
 
-  - [`stylish-haskell` config][stylish-haskell]
-  - [`hlint` config][hlint]
+  - [`stylish-haskell` config](https://github.com/serokell/metatemplates/blob/master/haskell/.stylish-haskell.yaml)
+  - [`hlint` config](https://github.com/serokell/metatemplates/blob/master/haskell/.hlint.yaml)
   - [`hlint`
     config](https://github.com/serokell/universum/blob/master/.hlint.yaml)
     specific to [`universum`](https://github.com/serokell/universum), our custom
     Prelude
-  - [EditorConfig config][editorconfig]
+  - [EditorConfig config](https://github.com/serokell/metatemplates/blob/master/.editorconfig)
 
 ## General Guidelines
 
@@ -119,7 +119,7 @@ filter p (x:xs)
 
 The last two points can be handled by [EditorConfig](https://editorconfig.org/).
 You are encouraged to install an EditorConfig plugin for your editor and use
-[our config][editorconfig] for Haskell files, but you *may* also configure your
+[our config](https://github.com/serokell/metatemplates/blob/master/.editorconfig) for Haskell files, but you *may* also configure your
 editor using specific instructions for [removing trailing
 whitespace](https://github.com/editorconfig/editorconfig/wiki/Property-research:-Trim-trailing-spaces)
 and [appending a trailing
@@ -167,7 +167,7 @@ name.
 
 ``` haskell
 data NetworkConfig = NetworkConfig
-  { ncDelay :: Microsecond  -- `nc` corresponds to `_N_etwork_C_onfig`
+  { ncDelay :: Microsecond  -- `nc` corresponds to `NetworkConfig`
   , ncPort  :: Word
   }
 ```
@@ -321,7 +321,7 @@ Imports *should* be grouped in the following order:
 Put a blank line between each group of imports.
 
 The imports in each group should be sorted alphabetically. `stylish-haskell`
-with [our config][stylish-haskell] can do this for you.
+with [our config](https://github.com/serokell/metatemplates/blob/master/haskell/.stylish-haskell.yaml) can do this for you.
 
 You *may* use implicit imports for modules within your current project.
 
@@ -371,7 +371,7 @@ are partial functions.
 
 As usual, separate type classes with `, ` (comma and a space).
 
-You *should* specify explicit [deriving strategies](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies) in all `deriving` clauses.
+You *should* specify explicit [deriving strategies](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/exts/deriving_strategies.html) in all `deriving` clauses.
 The `-Wmissing-deriving-strategies ` warning (available since GHC-8.8.1) can help you enforce this rule on CI.
 
 ### Function declaration
@@ -390,7 +390,7 @@ You *should* avoid overly general signatures for functions that are actually
 used with only one type for each parameter. If you need the polymorhic version
 (i.e. if you are instantiating it more than once or if you are writing a
 library), you *may* use GHC's [`SPECIALIZE`
-pragma](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#specialize-pragma).
+pragma](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/exts/pragmas.html#specialize-pragma).
 
 You *should* omit parentheses if you have only one constraint.
 
