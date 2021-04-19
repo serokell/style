@@ -167,7 +167,7 @@ name.
 
 ``` haskell
 data NetworkConfig = NetworkConfig
-  { ncDelay :: Microsecond  -- `nc` corresponds to `_N_etwork_C_onfig`
+  { ncDelay :: Microsecond  -- `nc` corresponds to `NetworkConfig`
   , ncPort  :: Word
   }
 ```
@@ -371,7 +371,7 @@ are partial functions.
 
 As usual, separate type classes with `, ` (comma and a space).
 
-You *should* specify explicit [deriving strategies](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#deriving-strategies) in all `deriving` clauses.
+You *should* specify explicit [deriving strategies](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/exts/deriving_strategies.html) in all `deriving` clauses.
 The `-Wmissing-deriving-strategies ` warning (available since GHC-8.8.1) can help you enforce this rule on CI.
 
 ### Function declaration
@@ -390,7 +390,7 @@ You *should* avoid overly general signatures for functions that are actually
 used with only one type for each parameter. If you need the polymorhic version
 (i.e. if you are instantiating it more than once or if you are writing a
 library), you *may* use GHC's [`SPECIALIZE`
-pragma](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#specialize-pragma).
+pragma](https://downloads.haskell.org/ghc/latest/docs/html/users_guide/exts/pragmas.html#specialize-pragma).
 
 You *should* omit parentheses if you have only one constraint.
 
@@ -574,6 +574,6 @@ Modules and libraries should go in alphabetical order inside corresponding
 sections. You *may* put blank lines between groups in each section and sort each
 group independently.
 
-[stylish-haskell]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.stylish-haskell.yaml
-[hlint]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.hlint.yaml
-[editorconfig]: https://github.com/serokell/metatemplates/blob/master/templates/haskell/.editorconfig
+[stylish-haskell]: https://github.com/serokell/metatemplates/blob/master/haskell/.stylish-haskell.yaml
+[hlint]: https://github.com/serokell/metatemplates/blob/master/haskell/.hlint.yaml
+[editorconfig]: https://github.com/serokell/metatemplates/blob/master/.editorconfig
