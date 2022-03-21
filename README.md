@@ -14,6 +14,7 @@ in Union and some rules for contribution.
 Here you can find links to style guides:
 
 * [haskell](styles/haskell.md)
+* [javascript](styles/javascript.md)
 
 ## Committing policy
 
