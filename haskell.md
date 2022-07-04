@@ -320,6 +320,33 @@ Imports *should* be grouped in the following order:
 
 Put a blank line between each group of imports.
 
+For qualified imports you *should* use `ImportQualifiedPost` [extension](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/import_qualified_post.html).
+In case the package supports GHC < 8.10.1 you *should* put `qualified` imports in
+separate groups, respecting the order.
+Examples:
+
+For GHC >= 8.10.1
+``` haskell
+import Data.Char (isUpper)
+import Data.Map qualified as Map
+import Data.Text qualified as Text
+
+import My.Helpers (helper)
+import My.Lib qualified as Lib
+```
+
+For GHC < 8.10.1
+``` haskell
+import qualified Data.Map as Map
+import qualified Data.Text as Text
+
+import Data.Char (isUpper)
+
+import qualified My.Lib as Lib
+
+import My.Helpers (helper)
+```
+
 The imports in each group should be sorted alphabetically. `stylish-haskell`
 with [our config][stylish-haskell] can do this for you.
 
